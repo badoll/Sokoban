@@ -80,46 +80,28 @@ game_map::load()
         "x000000000000000000x",
         "xxxxxxxxxxxxxxxxxxxx",
     };
-//    int x = 0, y = MAP_HEIGHT - 1;
-//    for (const auto& m : map) {
-//        for (const auto& s : m) {
-//            if (s == '0') map_b[x][y] = ACCESS;
-//            else if (s == 'x'){
-//                std::cout << "1" << std::endl;
-//                wall.push_back({x,y});
-//                map_b[x][y] = WALL;
-//            }
-//            else if (s == '1'){
-//                std::cout << "2" << std::endl;
-//                start_point = {x,y};
-//                map_b[x][y] = START;
-//            }
-//            else if (s == '2') {
-//                std::cout << "3" << std::endl;
-//                end_point = {x,y};
-//                map_b[x][y] = DEST;
-//            }
-//            if (++x == MAP_WIDTH) break;
-//        }
-//        if (--y < 0) break;
-//    }
-    for (int i = 0; i < MAP_WIDTH; ++i) {
-        for (int j = 0; j < MAP_HEIGHT; ++j) {
-            int y = MAP_HEIGHT - 1 - j;
-            if (map[i][j] == '0') map_b[i][y] = ACCESS;
-            else if (map[i][j] == 'x'){
-                wall.push_back({i,y});
-                map_b[i][y] = WALL;
+    int x = 0, y = MAP_HEIGHT - 1;
+    for (const auto& m : map) {
+        for (const auto& s : m) {
+            if (s == '0') map_b[x][y] = ACCESS;
+            else if (s == 'x'){
+                std::cout << "1" << std::endl;
+                wall.push_back({x,y});
+                map_b[x][y] = WALL;
             }
-            else if (map[i][j] == '1'){
-                start_point = {i,y};
-                map_b[i][y] = ACCESS;
+            else if (s == '1'){
+                std::cout << "2" << std::endl;
+                start_point = {x,y};
+                map_b[x][y] = START;
             }
-            else if (map[i][j] == '2') {
-                end_point = {i,y};
-                map_b[i][y] = DEST;
+            else if (s == '2') {
+                std::cout << "3" << std::endl;
+                end_point = {x,y};
+                map_b[x][y] = DEST;
             }
+            if (++x == MAP_WIDTH) break;
         }
+        if (--y < 0) break;
     }
 }
 
